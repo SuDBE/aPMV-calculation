@@ -5,22 +5,26 @@ Folder Input includes a cleaned dataset based on the Boxplot rule (python code: 
 
 The PMV calculation can be done by using the package pythermalcomfort, which is developed by: Tartarini, F., Schiavon, S., 2020. pythermalcomfort: A Python package for thermal comfort research. SoftwareX 12, 100578. https://doi.org/10.1016/j.softx.2020.100578
 
+## For ASHRAE data
 lambda_N_ASHRAE.py will calculate the λ value of climate Csb from the ASHRAE database as an example.  
 
-  
+## For general usage  
 lambda_N provides a general calculation process for the csv file, which should meet following requirements:  
-#### Packages 
+### Packages 
 pandas, numpy, sklearn, matplotlib, seaborn, pythermalcomfort  
-#### File name  
+### File name  
 aPMV.csv  
-#### File columns (no unit)  
+### File columns (no unit)  
 TSV: thermal sensation vote, -3 to +3  
 Clo: clothing level, clo  
 Met: metabolic rate, met  
 Ta: air temperature, ℃  
 Tr: radiant temperature, ℃  
 RH: relative humidity, %  
-Vel: air velocity, m/s  
+Vel: air velocity, m/s    
+#### Example:  
+![image](https://github.com/SuDBE/aPMV-calculation/assets/68046449/4b0f2998-f5b1-41f5-8f88-70ff26d6b51a)
+
 
 
 
