@@ -27,7 +27,7 @@ Vel: air velocity, m/s
 
 ### Outputs
 #### 1. aPMV curve with λ values
-![pic-aPMV curve](https://github.com/SuDBE/aPMV-calculation/assets/68046449/e941c02e-a172-4053-a220-84066c6149c4)  
+![pic-aPMV curve](https://github.com/SuDBE/aPMV-calculation/assets/68046449/80841f34-5d6a-40ed-8830-6d305f3d4dd8)
 
 #### 2. aPMV predictions compared with TSV and PMV  
 ![pic-aPMV points](https://github.com/SuDBE/aPMV-calculation/assets/68046449/e95d4a39-b0d9-4080-9305-f5e181c314f8)
