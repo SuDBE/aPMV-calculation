@@ -1,5 +1,5 @@
 # aPMV-calculation
-An improved method for calculating aPMV index. All code developed under Python 3.9.0 version.
+An improved method for calculating the aPMV index. All code has been developed using Python 3.9.0 version.
 
 Folder ***Input*** includes a cleaned dataset based on the Boxplot rule (python code: remove NA - outliter.py). Data were extracted from the ASHRAE Global Thermal Comfort Database II: Parkinson, Thomas et al. (2022). ASHRAE global database of thermal comfort field measurements [Dataset]. Dryad. https://doi.org/10.6078/D1F671
 
