@@ -7,12 +7,12 @@ df = pd.read_csv('./input/ashrae_db2.01_cleaned.csv')
 print(df.describe())
 
 # temperature range, checked with database, may need to be changed in practice
-temperature_bins = range(16, 40)
+temperature_bins = range(0, 50)
 
 result_df = pd.DataFrame(columns=['Climate', 'Ta', 'TSV', 'PMV'])
 
 # using climate Csb as an example
-Climate_sample = 'Af'
+Climate_sample = 'Csb'
 climate_data = df[df['Climate'] == Climate_sample]
 
 """
@@ -69,6 +69,8 @@ if sum_multi != 0:
             lambda_value_neg = 0.66
         else:
             lambda_value_neg = -0.66
+else:
+    lambda_value_neg = -0.66
 
 # PMV > 0
 sum_div = 0
@@ -98,7 +100,7 @@ if sum_multi != 0:
 lambda_value_neg = "{:.2f}".format(lambda_value_neg)
 lambda_value_pos = "{:.2f}".format(lambda_value_pos)
 
-print('New lambda (PMV<0): ', 'Csb', lambda_value_neg)
-print('New lambda (PMV>0): ', 'Csb', lambda_value_pos)
+print('New lambda (PMV<0): ', Climate_sample,'', lambda_value_neg)
+print('New lambda (PMV>0): ', Climate_sample,'', lambda_value_pos)
 
 
