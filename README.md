@@ -23,8 +23,11 @@ Tr: radiant temperature, ℃
 RH: relative humidity, %  
 Vel: air velocity, m/s    
 #### Example:  
-![image](https://github.com/SuDBE/aPMV-calculation/assets/68046449/4b0f2998-f5b1-41f5-8f88-70ff26d6b51a)
+![image](https://github.com/SuDBE/aPMV-calculation/assets/68046449/4b0f2998-f5b1-41f5-8f88-70ff26d6b51a)  
 
+### Outputs
+#### 1. aPMV curve with λ values
+![pic-aPMV curve](https://github.com/SuDBE/aPMV-calculation/assets/68046449/e941c02e-a172-4053-a220-84066c6149c4)  
 
-
-
+#### 2. aPMV predictions compared with TSV and PMV  
+![pic-aPMV points](https://github.com/SuDBE/aPMV-calculation/assets/68046449/e95d4a39-b0d9-4080-9305-f5e181c314f8)
