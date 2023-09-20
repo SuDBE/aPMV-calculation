@@ -1,4 +1,4 @@
-![image](https://github.com/SuDBE/aPMV-calculation/assets/68046449/b44b485b-1890-41e9-a831-72a9877a2ed2)# aPMV-calculation
+# aPMV-calculation
 An improved method for calculating aPMV index
 
 Folder Input includes a cleaned dataset based on the Boxplot rule (python code: remove NA - outliter.py). Data were extracted from the ASHRAE Global Thermal Comfort Database II: Parkinson, Thomas et al. (2022). ASHRAE global database of thermal comfort field measurements [Dataset]. Dryad. https://doi.org/10.6078/D1F671.
@@ -8,16 +8,16 @@ The PMV calculation can be done by using package pythermalcomfort, which is deve
 lambda_N_ASHRAE.py will calculate the λ value of climate Csb from ASHRAE database as an example.
 
 lambda_N provides a general calculation process for the csv file, which should be meet following requirements:
-Package: pandas, numpy, sklearn, matplotlib, seaborn, pythermalcomfort
-File name: aPMV.csv
-File columns (no unit): 
-TSV: thermal sensation vote, -3 to +3
-Clo: clothing level, clo
-Met: metabolic rate, met
-Ta: air temperature, ℃
-Tr: radiant temperature, ℃
-RH: relative humidity, %
-Vel: air velocity, m/s
+Package: pandas, numpy, sklearn, matplotlib, seaborn, pythermalcomfort  
+File name: aPMV.csv  
+File columns (no unit):   
+TSV: thermal sensation vote, -3 to +3  
+Clo: clothing level, clo  
+Met: metabolic rate, met  
+Ta: air temperature, ℃  
+Tr: radiant temperature, ℃  
+RH: relative humidity, %  
+Vel: air velocity, m/s  
 
 
 
