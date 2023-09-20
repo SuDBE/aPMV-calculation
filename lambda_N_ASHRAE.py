@@ -12,7 +12,8 @@ temperature_bins = range(16, 40)
 result_df = pd.DataFrame(columns=['Climate', 'Ta', 'TSV', 'PMV'])
 
 # using climate Csb as an example
-climate_data = df[df['Climate'] == 'Csb']
+Climate_sample = 'Csb'
+climate_data = df[df['Climate'] == Climate_sample]
 
 """
     bin data
@@ -26,7 +27,7 @@ for temp_range in zip(temperature_bins[:-1], temperature_bins[1:]):
     avg_pmv = temp_data['PMV'].mean()
 
     result_df = result_df.append({
-        'Climate': 'Csb',
+        'Climate': Climate_sample,
         'Ta': temp_min,
         'TSV': avg_tsv,
         'PMV': avg_pmv
