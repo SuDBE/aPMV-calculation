@@ -12,7 +12,7 @@ temperature_bins = range(16, 40)
 result_df = pd.DataFrame(columns=['Climate', 'Ta', 'TSV', 'PMV'])
 
 # using climate Csb as an example
-Climate_sample = 'Csb'
+Climate_sample = 'Af'
 climate_data = df[df['Climate'] == Climate_sample]
 
 """
@@ -41,7 +41,7 @@ print(df_bin)
 """
 from sklearn.metrics import mean_squared_error
 
-climate_data = df_bin[df_bin['Climate'] == 'Csb']
+climate_data = df_bin[df_bin['Climate'] == Climate_sample]
 y_true = []
 y_hat1 = []
 y_hat2 = []
