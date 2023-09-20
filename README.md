@@ -1,10 +1,10 @@
 # aPMV-calculation
-An improved method for calculating aPMV index. 
+An improved method for calculating aPMV index. All code developed under Python 3.9.0 version.
 
 Folder ***Input*** includes a cleaned dataset based on the Boxplot rule (python code: remove NA - outliter.py). Data were extracted from the ASHRAE Global Thermal Comfort Database II: Parkinson, Thomas et al. (2022). ASHRAE global database of thermal comfort field measurements [Dataset]. Dryad. https://doi.org/10.6078/D1F671
 
 The PMV calculation can be done by using the package pythermalcomfort, which is developed by: Tartarini, F., Schiavon, S., 2020. pythermalcomfort: A Python package for thermal comfort research. SoftwareX 12, 100578. https://doi.org/10.1016/j.softx.2020.100578  
-All code developed under Python 3.9.0 version.
+
 
 ## For ASHRAE data
 ***lambda_N_ASHRAE.py*** will calculate the λ value of climate Csb from the ASHRAE database as an example.
