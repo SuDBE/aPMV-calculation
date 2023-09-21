@@ -12,7 +12,7 @@ temperature_bins = range(0, 50)
 result_df = pd.DataFrame(columns=['Climate', 'Ta', 'TSV', 'PMV'])
 
 # using climate Csb as an example
-Climate_sample = 'Csb'
+Climate_sample = 'Aw'
 climate_data = df[df['Climate'] == Climate_sample]
 
 """
@@ -49,6 +49,7 @@ y_hat2 = []
 # PMV < 0
 sum_div = 0
 sum_multi = 0
+lambda_value_neg = None
 for index, row in climate_data.iterrows():
     if row['PMV'] < 0:
         div = row['PMV'] - row['TSV']
@@ -69,12 +70,11 @@ if sum_multi != 0:
             lambda_value_neg = 0.66
         else:
             lambda_value_neg = -0.66
-else:
-    lambda_value_neg = -0.66
 
 # PMV > 0
 sum_div = 0
 sum_multi = 0
+lambda_value_pos = None
 for index, row in climate_data.iterrows():
     if row['PMV'] >= 0:
         div = row['PMV'] - row['TSV']
@@ -97,8 +97,15 @@ if sum_multi != 0:
         else:
             lambda_value_pos = -0.66
 
-lambda_value_neg = "{:.2f}".format(lambda_value_neg)
-lambda_value_pos = "{:.2f}".format(lambda_value_pos)
+if lambda_value_neg is not None:
+    lambda_value_neg = "{:.2f}".format(lambda_value_neg)
+else:
+    lambda_value_neg = 'NaN'
+
+if lambda_value_pos is not None:
+    lambda_value_pos = "{:.2f}".format(lambda_value_pos)
+else:
+    lambda_value_pos = 'NaN'
 
 print('New lambda (PMV<0): ', Climate_sample,'', lambda_value_neg)
 print('New lambda (PMV>0): ', Climate_sample,'', lambda_value_pos)
