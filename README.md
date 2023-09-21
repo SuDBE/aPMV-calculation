@@ -12,7 +12,7 @@ The PMV calculation can be done by using the package ***pythermalcomfort***, whi
 ***lambda_N_ASHRAE.py*** will calculate the λ value of climate Csb from the ASHRAE database as an example.
 
 ## For general usage  
-Due to GitHub's 25MB file size limit for uploads, we have generated an executable (.exe) file that can run on Windows 64-bit systems. This makes it convenient for users who do not have Python installed to try out the code. The file size is around 110 MB.  
+We have generated an executable (.exe) file that can run on Windows 64-bit systems. This makes it convenient for users who do not have Python installed to try out the code. The file size is around 110 MB, due to GitHub's 25MB file size limit for uploads, we uploaded it here:  
 https://www.dropbox.com/sh/jjcayg8iz6gcjud/AACmCTpTRYT5WFDzkluUlnDTa?dl=0 
 
 ***lambda_N.py*** provides a general calculation process for the csv file, which should meet the following requirements:
