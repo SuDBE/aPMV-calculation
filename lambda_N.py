@@ -79,8 +79,6 @@ def pmv_ppd_optimized(tdb, tr, vr, rh, met, clo, wme):
     return {"pmv": round(_pmv, 2), "ppd": round(_ppd, 2)}
     # return _pmv
 
-
-
 ta = df["Ta"].values
 tr = df["Tr"].values
 vel = df["Vel"].values
@@ -149,6 +147,7 @@ y_hat2 = []
 # PMV < 0
 sum_div = 0
 sum_multi = 0
+lambda_value_neg = None
 for index, row in climate_data.iterrows():
     if row['PMV'] < 0:
         div = row['PMV'] - row['TSV']
@@ -173,6 +172,7 @@ if sum_multi != 0:
 # PMV > 0
 sum_div = 0
 sum_multi = 0
+lambda_value_pos = None
 for index, row in climate_data.iterrows():
     if row['PMV'] >= 0:
         div = row['PMV'] - row['TSV']
@@ -195,8 +195,15 @@ if sum_multi != 0:
         else:
             lambda_value_pos = -0.66
 
-lambda_value_neg = "{:.2f}".format(lambda_value_neg)
-lambda_value_pos = "{:.2f}".format(lambda_value_pos)
+if lambda_value_neg is not None:
+    lambda_value_neg = "{:.2f}".format(lambda_value_neg)
+else:
+    lambda_value_neg = 'NaN'
+
+if lambda_value_pos is not None:
+    lambda_value_pos = "{:.2f}".format(lambda_value_pos)
+else:
+    lambda_value_pos = 'NaN'
 
 print('λ (PMV<0): ', lambda_value_neg)
 print('λ (PMV>0): ', lambda_value_pos)
@@ -206,17 +213,24 @@ print('λ (PMV>0): ', lambda_value_pos)
 """
 x_neg_P = np.arange(-3, 0, 0.01)
 y_neg_P = list()
-lambda_value_neg = float(lambda_value_neg)
-for t in x_neg_P:
-    yi = t / (1 + lambda_value_neg * t)  # y轴具体数值
-    y_neg_P.append(yi)
+if lambda_value_neg != 'NaN':
+    lambda_value_neg = float(lambda_value_neg)
+    for t in x_neg_P:
+        yi = t / (1 + lambda_value_neg * t)  # y轴具体数值
+        y_neg_P.append(yi)
 
-x_pos_P = np.arange(0, 3, 0.01)
-y_pos_P = list()
-lambda_value_pos = float(lambda_value_pos)
-for t in x_pos_P:
-    yi = t / (1 + lambda_value_pos * t)  # y轴具体数值
-    y_pos_P.append(yi)
+if lambda_value_pos != 'NaN':
+    x_pos_P = np.arange(0, 3, 0.01)
+    y_pos_P = list()
+    lambda_value_pos = float(lambda_value_pos)
+    for t in x_pos_P:
+        yi = t / (1 + lambda_value_pos * t)  # y轴具体数值
+        y_pos_P.append(yi)
+
+import time
+if lambda_value_pos == 'NaN' and lambda_value_neg == 'NaN':
+    print("Please use valid data!")
+    time.sleep(5)
 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -228,11 +242,16 @@ plt.figure(figsize=(6, 5))
 alpha = 0.85
 width1 = 2.1
 
-label_neg = f'PMV<0, λ={lambda_value_neg:.2f}'
-label_pos = f'PMV>0, λ={lambda_value_pos:.2f}'
+if lambda_value_neg != 'NaN':
+    label_neg = f'PMV<0, λ={lambda_value_neg:.2f}'
 
-sns.lineplot(x=x_neg_P, y=y_neg_P, label=label_neg, color='royalblue',alpha = alpha, linestyle='dashed', linewidth=width1)
-sns.lineplot(x=x_pos_P, y=y_pos_P, label=label_pos, color='orangered',alpha =alpha, linestyle='dashed', linewidth=width1)
+if lambda_value_pos != 'NaN':
+    label_pos = f'PMV>0, λ={lambda_value_pos:.2f}'
+
+if lambda_value_neg != 'NaN':
+    sns.lineplot(x=x_neg_P, y=y_neg_P, label=label_neg, color='royalblue',alpha = alpha, linestyle='dashed', linewidth=width1)
+if lambda_value_pos != 'NaN':
+    sns.lineplot(x=x_pos_P, y=y_pos_P, label=label_pos, color='orangered',alpha =alpha, linestyle='dashed', linewidth=width1)
 
 sns.scatterplot(x='PMV', y='TSV', data=climate_data, hue='PMV category', legend=False)
 
@@ -247,9 +266,9 @@ plt.savefig('pic-aPMV curve.png', format='png', dpi=400)
 # plt.show()
 
 def calculate_pred(row):
-    if row['PMV category'] == 'PMV < 0':
+    if row['PMV category'] == 'PMV < 0' and lambda_value_neg != 'NaN':
         return row['PMV'] / (1 + lambda_value_neg * row['PMV'])
-    elif row['PMV category'] == 'PMV > 0':
+    elif row['PMV category'] == 'PMV > 0' and lambda_value_pos != 'NaN':
         return row['PMV'] / (1 + lambda_value_pos * row['PMV'])
     else:
         return None
